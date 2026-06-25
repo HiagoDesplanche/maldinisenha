@@ -16,16 +16,16 @@
 
     <!-- Maldini Images -->
     <div class="maldini-section">
-        <img src="https://i.pinimg.com/236x/8b/6c/0a/8b6c0a2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
-        <img src="https://i.pinimg.com/236x/9c/7d/2b/9c7d2b2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
-        <img src="https://i.pinimg.com/236x/8b/6c/0a/8b6c0a2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Paolo_Maldini_2009.jpg/800px-Paolo_Maldini_2009.jpg" alt="Paolo Maldini">
+        <img src="https://assets.goal.com/v3/assets/bltcc7a7ffd4fbf71f5/blt5a8d3e8f5a6b3c7d/60c9d8e4f8a9b7c9d8e4f8a9/paolo_maldini.jpg" alt="Maldini 2">
+        <img src="https://www.acmilan.com/images/legends/maldini.jpg" alt="Maldini 3">
     </div>
 
     <!-- Luva de Pedreiro Images -->
     <div class="pedreiro-section">
-        <img src="https://i.pinimg.com/236x/5d/8e/3f/5d8e3f2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
-        <img src="https://i.pinimg.com/236x/6e/9f/4d/6e9f4d2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
-        <img src="https://i.pinimg.com/236x/7f/0e/5c/7f0e5c2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
+        <img src="https://i.ytimg.com/vi/mXZyx4Kp8VE/maxresdefault.jpg" alt="Luva de Pedreiro">
+        <img src="https://pbs.twimg.com/media/E8k4QJxWQAEzXVw.jpg" alt="Luva de Pedreiro 2">
+        <img src="https://s2.glbimg.com/5m4c4q2zZt1VvG4VvG4VvG4/620x465/2021/08/23/luva-de-pedreiro.jpg" alt="Luva de Pedreiro 3">
     </div>
 
     <div class="input-group">
@@ -40,14 +40,29 @@
         <label><input type="checkbox" id="symbols" checked> SÍMBOLOS</label>
     </div>
 
-    <input id="password" readonly placeholder="SENHA GERADA">
+    <div class="password-container">
+        <input id="password" readonly placeholder="SENHA GERADA">
+        <span class="eye-icon" onclick="togglePasswordVisibility()">👁️</span>
+    </div>
 
     <div class="button-group">
         <button onclick="generatePassword()">⚡ GERAR</button>
         <button onclick="copyPassword()">📋 COPIAR</button>
+        <button onclick="clearPassword()">🗑️ LIMPAR</button>
     </div>
 
     <div id="strength">FORÇA: <span id="strengthText">AGUARDANDO...</span></div>
+
+    <!-- Footer -->
+    <footer>
+        <p>Desenvolvido por <span class="highlight">Hiago</span> | Cyber Security 🔒</p>
+        <div class="social-links">
+            <a href="#" onclick="alert('GitHub: Hiago-Cyber')">🐙 GitHub</a>
+            <a href="#" onclick="alert('LinkedIn: Hiago Silva')">💼 LinkedIn</a>
+            <a href="#" onclick="alert('Email: hiago@cyber.com')">📧 Email</a>
+        </div>
+        <p class="copy">© 2026 - Todos os direitos reservados</p>
+    </footer>
 </div>
 
 <script src="script.js"></script>
