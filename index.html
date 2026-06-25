@@ -1,30 +1,53 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Cyber Password Generator</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Cyber Password Generator 🔥</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<!-- Matrix Rain Effect -->
+<div class="matrix-rain" id="matrixRain"></div>
+
 <div class="container">
-    <h1>CYBER PASSWORD GENERATOR</h1>
+    <h1 class="glitch">CYBER PASSWORD GENERATOR</h1>
 
-    <input type="range" id="length" min="8" max="64" value="16">
-
-    <div class="options">
-        <label><input type="checkbox" id="upper" checked> Maiúsculas</label>
-        <label><input type="checkbox" id="lower" checked> Minúsculas</label>
-        <label><input type="checkbox" id="numbers" checked> Números</label>
-        <label><input type="checkbox" id="symbols" checked> Símbolos</label>
+    <!-- Maldini Images -->
+    <div class="maldini-section">
+        <img src="https://i.pinimg.com/236x/8b/6c/0a/8b6c0a2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
+        <img src="https://i.pinimg.com/236x/9c/7d/2b/9c7d2b2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
+        <img src="https://i.pinimg.com/236x/8b/6c/0a/8b6c0a2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Maldini 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'80\' height=\'80\'%3E%3Crect fill=\'%23003300\' width=\'80\' height=\'80\'/%3E%3Ctext x=\'20\' y=\'45\' fill=\'%2300ff41\' font-size=\'12\'%3EMaldini%3C/text%3E%3C/svg%3E'">
     </div>
 
-    <input id="password" readonly>
+    <!-- Luva de Pedreiro Images -->
+    <div class="pedreiro-section">
+        <img src="https://i.pinimg.com/236x/5d/8e/3f/5d8e3f2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 1" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
+        <img src="https://i.pinimg.com/236x/6e/9f/4d/6e9f4d2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 2" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
+        <img src="https://i.pinimg.com/236x/7f/0e/5c/7f0e5c2a8c5b3f2c6d5f8a9b8c7d6e5f.jpg" alt="Luva de Pedreiro 3" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'70\' height=\'70\'%3E%3Crect fill=\'%23003300\' width=\'70\' height=\'70\'/%3E%3Ctext x=\'12\' y=\'40\' fill=\'%2300ff41\' font-size=\'10\'%3ELuva%3C/text%3E%3C/svg%3E'">
+    </div>
 
-    <button onclick="generatePassword()">GERAR</button>
-    <button onclick="copyPassword()">COPIAR</button>
+    <div class="input-group">
+        <label>🔐 COMPRIMENTO: <span id="lengthValue">16</span></label>
+        <input type="range" id="length" min="8" max="64" value="16">
+    </div>
 
-    <div id="strength"></div>
+    <div class="options">
+        <label><input type="checkbox" id="upper" checked> MAIÚSCULAS</label>
+        <label><input type="checkbox" id="lower" checked> MINÚSCULAS</label>
+        <label><input type="checkbox" id="numbers" checked> NÚMEROS</label>
+        <label><input type="checkbox" id="symbols" checked> SÍMBOLOS</label>
+    </div>
+
+    <input id="password" readonly placeholder="SENHA GERADA">
+
+    <div class="button-group">
+        <button onclick="generatePassword()">⚡ GERAR</button>
+        <button onclick="copyPassword()">📋 COPIAR</button>
+    </div>
+
+    <div id="strength">FORÇA: <span id="strengthText">AGUARDANDO...</span></div>
 </div>
 
 <script src="script.js"></script>
