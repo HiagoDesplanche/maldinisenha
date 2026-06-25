@@ -43,7 +43,9 @@ function generatePassword() {
     }
 
     document.getElementById('password').value = password;
+    document.getElementById('password').type = 'text';
     checkStrength(password);
+    animateGenerate();
 }
 
 // Copy Password
@@ -56,9 +58,14 @@ function copyPassword() {
 
     navigator.clipboard.writeText(passwordField.value).then(() => {
         const btn = event.target;
+        const originalText = btn.textContent;
         btn.textContent = '✅ COPIADO!';
+        btn.style.background = '#00ff41';
+        btn.style.color = '#000';
         setTimeout(() => {
-            btn.textContent = '📋 COPIAR';
+            btn.textContent = originalText;
+            btn.style.background = 'transparent';
+            btn.style.color = '#00ff41';
         }, 2000);
     }).catch(() => {
         // Fallback
@@ -68,6 +75,28 @@ function copyPassword() {
     });
 }
 
+// Clear Password
+function clearPassword() {
+    document.getElementById('password').value = '';
+    document.getElementById('strengthText').textContent = 'AGUARDANDO...';
+    document.getElementById('strengthText').style.color = '#00cc33';
+    document.getElementById('strength').style.borderColor = 'rgba(0, 255, 65, 0.1)';
+}
+
+// Toggle Password Visibility
+function togglePasswordVisibility() {
+    const passwordField = document.getElementById('password');
+    const eyeIcon = document.querySelector('.eye-icon');
+    
+    if (passwordField.type === 'password') {
+        passwordField.type = 'text';
+        eyeIcon.textContent = '👁️‍🗨️';
+    } else {
+        passwordField.type = 'password';
+        eyeIcon.textContent = '👁️';
+    }
+}
+
 // Check Password Strength
 function checkStrength(password) {
     const strengthText = document.getElementById('strengthText');
@@ -75,17 +104,34 @@ function checkStrength(password) {
 
     if (password.length >= 12) score++;
     if (password.length >= 16) score++;
+    if (password.length >= 20) score++;
     if (/[A-Z]/.test(password)) score++;
     if (/[a-z]/.test(password)) score++;
     if (/[0-9]/.test(password)) score++;
     if (/[^A-Za-z0-9]/.test(password)) score++;
 
-    const strengths = ['FRACA', 'FRACA', 'MÉDIA', 'MÉDIA', 'FORTE', 'FORTE', 'MUITO FORTE'];
-    const colors = ['#ff0000', '#ff0000', '#ffff00', '#ffff00', '#00ff00', '#00ff00', '#00ff41'];
+    const strengths = ['MUITO FRACA', 'FRACA', 'MÉDIA', 'MÉDIA', 'FORTE', 'FORTE', 'MUITO FORTE', 'EXCELENTE'];
+    const colors = ['#ff0000', '#ff3300', '#ffaa00', '#ffaa00', '#66ff00', '#66ff00', '#00ff41', '#00ffaa'];
+    const emojis = ['💀', '⚠️', '⚠️', '⚠️', '✅', '✅', '🔒', '🔐'];
 
-    strengthText.textContent = strengths[score];
-    strengthText.style.color = colors[score];
-    document.getElementById('strength').style.borderColor = colors[score];
+    const index = Math.min(score, 7);
+    strengthText.textContent = emojis[index] + ' ' + strengths[index];
+    strengthText.style.color = colors[index];
+    document.getElementById('strength').style.borderColor = colors[index];
+    document.getElementById('strength').style.boxShadow = `0 0 30px ${colors[index]}20`;
+}
+
+// Animate Generate Button
+function animateGenerate() {
+    const btn = document.querySelector('.button-group button:first-child');
+    btn.style.background = '#00ff41';
+    btn.style.color = '#000';
+    btn.textContent = '✅ GERADO!';
+    setTimeout(() => {
+        btn.textContent = '⚡ GERAR';
+        btn.style.background = 'transparent';
+        btn.style.color = '#00ff41';
+    }, 1500);
 }
 
 // Initialize on page load
@@ -103,4 +149,20 @@ document.getElementById('length').addEventListener('input', function() {
 // Generate on checkbox change
 document.querySelectorAll('.options input').forEach(checkbox => {
     checkbox.addEventListener('change', generatePassword);
+});
+
+// Keyboard shortcut: Ctrl+Enter to generate
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === 'Enter') {
+        e.preventDefault();
+        generatePassword();
+    }
+});
+
+// Keyboard shortcut: Ctrl+C to copy
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key === 'c' && document.activeElement.id === 'password') {
+        e.preventDefault();
+        copyPassword();
+    }
 });
